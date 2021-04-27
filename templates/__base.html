@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Responsive Sticky Navigation</title>
+    <link rel="stylesheet" href="{% static 'base/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="{% static 'base/css/Responsive-Sticky-Navigation-1.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/Responsive-Sticky-Navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/styles.css' %}">
+</head>
+
+<body><div class="imageHold">
+	<img src="{% static 'base/img/diit_logo.png' %}" />
+</div>
+<nav id="navigation">
+    <div class="container text-center">
+        <ul class="navHold">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Personal Stories</a></li>
+            <li><a href="#">Registration</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Hi {{ user.name }}!</a></li>
+            {% else %}
+                <li><a href="{% url 'signup' %}">Sign up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="logosmall hidels">
+        <img src="{% static 'base/img/diit_logo.png' %}" height="24px" />
+    </div>
+	<div class="navResponsive"></div>
+</nav>
+<div class="container">
+    {% block content %}
+
+
+
+
+    {% endblock content %}
+
+</div>
+    <script src="{% static 'base/js/jquery.min.js' %}"></script>
+    <script src="{% static 'base/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'base/js/Responsive-Sticky-Navigation.js' %}"></script>
+</body>
+
+</html>

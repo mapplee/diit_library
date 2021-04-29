@@ -1,5 +1,7 @@
 from django.db import models
 import uuid
+from django.conf import settings
+from django.db.models.fields import DecimalField
 # Create your models here.
 
 class BookDetail(models.Model):
@@ -38,11 +40,21 @@ class BookItem(models.Model):
 
 
 class Book_Reservation(models.Model):
-    reserved_book= models.ForeignKey(BookItem, on_delete=models.CASCADE)
+    reserver_detials=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    reserved_book_details= models.ForeignKey(BookItem, on_delete=models.CASCADE)
     creation_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     StatusType = models.TextChoices('status', 'Waiting Pending Canceled Completed None')
     status=models.CharField(blank=False, choices=StatusType.choices, max_length=10)
     def __str__(self):
         return self.status
-
-
+class book_Lending(models.Model):
+    book_reservation_details=models.OneToOneField(Book_Reservation, on_delete = models.CASCADE)
+    lender_details=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    lender_book_details=models.ForeignKey(BookItem, on_delete=models.CASCADE)
+    creation_date=models.DateTimeField(auto_now=False, auto_now_add=False)
+    due_date=models.DateTimeField(auto_now=False, auto_now_add=False)
+    return_date=models.DateTimeField(auto_now=False, auto_now_add=False)
+class Fine(models.Model):
+    reservation_details=models.OneToOneField(Book_Reservation, on_delete = models.CASCADE)
+    lending_details=models.OneToOneField(book_Lending, on_delete = models.CASCADE)
+    amount=models.FloatField(null=True)

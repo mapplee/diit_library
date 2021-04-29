@@ -19,11 +19,13 @@
 <nav id="navigation">
     <div class="container text-center">
         <ul class="navHold">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Personal Stories</a></li>
-            <li><a href="#">Registration</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li> 
             {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Hi {{ user.name }}!</a></li>
+            <li><a href="#">My books</a></li>
+            <li><a href="#">Reserved Book</a></li>
+            <li><a href="#">Return Book</a></li>
+            <li><a href="#">Hi {{ user.username }}!</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'signup' %}">Sign up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>

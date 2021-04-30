@@ -21,21 +21,29 @@
         <ul class="navHold">
             <li><a href="{% url 'home' %}">Home</a></li> 
             {% if user.is_authenticated %}
+            {% for group in request.user.groups.all %}
+            {% if group.name == 'Stuff' or group.name == 'Supper_admin' %}
+            <li><a href="{% url 'book_checkout' %}">Checkout_Book</a></li>
+            {% endif %}
+            {% endfor %}
             <li><a href="#">My books</a></li>
             <li><a href="#">Reserved Book</a></li>
             <li><a href="#">Return Book</a></li>
+  
+
             <li><a href="#">Hi {{ user.username }}!</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'signup' %}">Sign up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
+    
         </ul>
     </div>
     <div class="logosmall hidels">
         <img src="{% static 'base/img/diit_logo.png' %}" height="24px" />
     </div>
-	<div class="navResponsive"></div>
+	<div class="navResponsive "></div>
 </nav>
 <div class="container">
     {% block content %}

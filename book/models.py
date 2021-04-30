@@ -49,13 +49,20 @@ class Book_Reservation(models.Model):
     def __str__(self):
         return self.status
 class book_Lending(models.Model):
-    book_reservation_details=models.OneToOneField(Book_Reservation, on_delete = models.CASCADE)
     lender_details=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     lender_book_details=models.ForeignKey(BookItem, on_delete=models.CASCADE)
     creation_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     due_date=models.DateTimeField(auto_now=False, auto_now_add=False)
-    return_date=models.DateTimeField(auto_now=False, auto_now_add=False)
+    return_date=models.DateTimeField(auto_now=False, auto_now_add=False,null=True)
 class Fine(models.Model):
     reservation_details=models.OneToOneField(Book_Reservation, on_delete = models.CASCADE)
     lending_details=models.OneToOneField(book_Lending, on_delete = models.CASCADE)
     amount=models.FloatField(null=True)
+class Checkout_Details(models.Model):
+    user_details=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    total_checkout=models.DecimalField(max_digits=6, decimal_places=2)
+
+
+#day
+
+

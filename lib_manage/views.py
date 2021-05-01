@@ -14,6 +14,8 @@ import datetime
 from book.form import CheckOutForm
 from django.contrib import messages
 import pickle
+from django.views.generic import ListView
+from book.models import BookDetail
 
 def is_in_multiple_groups(user):
     return user.groups.filter(name__in=['Stuff', 'Supper_admin']).exists()
@@ -172,6 +174,18 @@ def Reservation(request,id):
     else:
         messages.success(request, 'You Must Login')
         return HttpResponseRedirect(reverse_lazy('login'))
+
+from django.db.models import Q
+
+class SearchResultsListView(ListView):
+    model = BookDetail
+    context_object_name = 'book_list'
+    template_name = 'search_results.html'
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return BookDetail.objects.filter(
+            Q(title__icontains=query) | Q(author__icontains=query) | Q(publisher__icontains = query)
+        )
 
 
 

@@ -24,10 +24,12 @@
             {% for group in request.user.groups.all %}
             {% if group.name == 'Stuff' or group.name == 'Supper_admin' %}
             <li><a href="{% url 'book_checkout' %}">Checkout_Book</a></li>
+            <li><a href="{% url 'add_book_detail' %}">Add_Book</a></li>
+            <li><a href="{% url 'add_item' %}">Add_Book_Item</a></li>
             <li><a href="{% url 'book_return' %}">Return Book</a></li>
             {% endif %}
             {% endfor %}
-            <li><a href="#">My books</a></li>
+            <!--<li><a href="#">My books</a></li>-->
             <li><a href="#">Reserved Book</a></li>
             
   

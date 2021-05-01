@@ -33,11 +33,13 @@
                   <h2 class="card-title">{{book.title}}</h5>
                     <p>{{book.author}}</p>
                     <p>{{book.publisher}}</p>
+                    <p>{{book.id}}</p>
                 
                   <p class="card-text">This is book details line .This is book details line .This is book details line .This is book details line .This is book details line .</p>
                  
-                  <div class="ui bottom attached button js-button btn btn-primary btn-sm">
-                    <i class="add icon"></i><span>Make reservation!</span>
+                  <div class="">
+                    <button type="button" class="btn btn-secondary"><a href="{% url 'book_details' book.id %}">Book Details</a></button>
+            
                 </div>
                 </div>
               </div>

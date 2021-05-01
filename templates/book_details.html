@@ -1,0 +1,18 @@
+{% extends '__base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    Book Name: <h1>{{books.title}}</h1>
+    
+    Book author name: <p>{{books.author}}</p>
+    
+    Book publishier name: <p>{{books.publisher}}</p>
+    
+    ISBN: <p>{{books.isbn}}</p>
+    
+    Book language:  <p>{{books.language}}</p>
+    <button type="button" class="btn btn-secondary"><a href="{% url 'reservation' books.id%}">Make Reservation</a></button>
+
+{% endblock content %}

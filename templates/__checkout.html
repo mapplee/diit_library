@@ -4,7 +4,17 @@
 
 <article>
 
-    {{ch}}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
 
 </article>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 {% endblock content %}

@@ -46,8 +46,7 @@ class Book_Reservation(models.Model):
     creation_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     StatusType = models.TextChoices('status', 'Waiting Pending Canceled Completed None')
     status=models.CharField(blank=False, choices=StatusType.choices, max_length=10)
-    def __str__(self):
-        return self.status
+
 class book_Lending(models.Model):
     lender_details=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     lender_book_details=models.ForeignKey(BookItem, on_delete=models.CASCADE)

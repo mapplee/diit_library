@@ -182,6 +182,13 @@ def Reservation(request,id):
                 return render(request,'success.html')
             except:
                 print("Not Ok")
+            try:
+                b=Book_Reservation.objects.filter(reserved_book_details=check_reserve_item.id,status="Pending")[0]
+                #print(check_reserve_item.id)
+                messages.success(request, 'Sorrry all books are reserved')
+                return render(request,'success.html')
+            except:
+                print("Not Ok")
             Book_Reservation.objects.get(reserved_book_details=check_reserve_item.id,reserver_detials=user)#match the book already reserved by this id
             
             messages.success(request, 'Soorry book has been already reserveved by you')

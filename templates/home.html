@@ -7,29 +7,16 @@
 </article>
 
  <!--search form start --> 
- <form class="form-inline mt-2 mt-md-0" style="margin: 0px 0px 5px 15px;" action="{% url 'search_results' %}"
- method="get">
- <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search"
- aria-label="Search">
- </form>
+        <form class="form-inline mt-2 mt-md-0" style="margin: 0px 0px 5px 15px;" action="{% url 'search_results' %}"
+        method="get">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search"
+        aria-label="Search">
+        </form>
  <!--search form end --> 
 
     {% for book in books %}
 
- 
-         <!--   <div class="card">
-            <div class="image">
-                    <img class="image_img" src="{{ book.cover.url}}">
-                </div>
-                <div class="content">
-                        <div class="header">
-                            <a href="#" target="_blank">{{book.title}}</a>
-                        </div>
-                </div>
-            <div class="ui bottom attached button js-button btn btn-primary btn-sm">
-                <i class="add icon"></i><span>Make reservation!</span>
-            </div>
-        </div> -->
+
         <div class="container">
         <div class="card mb-3" style="max-width: 1000px;">
             <div class="row no-gutters">
@@ -42,7 +29,6 @@
                     <p>{{book.author}}</p>
                     <p>{{book.publisher}}</p>
                     <p>{{book.id}}</p>
-                
                   <p class="card-text">This is book details line .This is book details line .This is book details line .This is book details line .This is book details line .</p>
                  
                   <div class="">
@@ -55,6 +41,9 @@
           </div>
 
         </div>
+
+
+
 
     {% endfor %}
 

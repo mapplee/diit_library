@@ -187,6 +187,23 @@ class SearchResultsListView(ListView):
             Q(title__icontains=query) | Q(author__icontains=query) | Q(publisher__icontains = query)
         )
 
+def AddBook(request):
+    if request.method=="POST":
+            isbn = request.POST['isbn']
+            title = request.POST['title']
+            publisher = request.POST['publisher']
+            language = request.POST['language']
+            author = request.POST['author']
+            cover = request.POST['cover']
+            print(isbn,title,publisher,language,author,cover)
+            ins = BookDetail(isbn=isbn, title=title, publisher=publisher ,language=language, author=author, cover=cover)
+            ins.save()
+    #context = {'form':form}
+    return render(request, 'add_book_detail.html')
+
+def AddItem(request):
+    return render(request, 'AddBookitem.html')
+
 
 
 

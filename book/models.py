@@ -40,6 +40,7 @@ class BookItem(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
 
+
 class Book_Reservation(models.Model):
     reserver_detials=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     reserved_book_details= models.ForeignKey(BookItem, on_delete=models.CASCADE)

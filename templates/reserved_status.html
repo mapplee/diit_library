@@ -1,0 +1,45 @@
+{% extends '__base.html' %}
+{% block title %}Reserved Book{% endblock title %}
+{% block content %}
+
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+
+
+
+<article>
+<table>
+<tr>
+    <th>book_id</th>
+    <th>book Tittle </th>
+    <th>creation_date</th>
+    <th>status</th>
+</tr>
+{% for book in books %}
+<tr>
+
+<td>{{book.reserved_book_details.id}}</td>
+<td>{{book.reserved_book_details.book_details.title}}</td>
+<td>{{book.creation_date}}</td>
+<td>{{book.status}}</td>
+</tr>
+{% endfor %}
+</table>
+</article>
+{% endblock content %}

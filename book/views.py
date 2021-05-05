@@ -1,7 +1,7 @@
 import uuid
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models.deletion import SET_NULL
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import BookDetail, Checkout_Details,book_Lending,BookItem,Book_Reservation
 from .form import ReturnForm
@@ -79,6 +79,25 @@ def Book_Return(request):
 
 
 
+def My_Reserved_Book(request):
+    request_id=request.user
+    books=Book_Reservation.objects.filter(reserver_detials=request_id)
+    books_list=list(books)
+    context={}
+    context["books"]=books_list
+    print(books_list)
+    return render(request,'reserved_status.html',context)
+
+
+def My_Books(request):
+    request_id=request.user
+    books=book_Lending.objects.filter(lender_details=request_id)
+    books_list=list(books)
+    context={}
+    context["books"]=books_list
+
+
+    return render(request,'my_books.html',context)
 
 
 

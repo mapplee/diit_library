@@ -1,0 +1,44 @@
+{% extends '__base.html' %}
+{% block title %}My Books{% endblock title %}
+{% block content %}
+
+
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+
+
+<br><br><br>
+<article>
+<table>
+<tr>
+    <th>book_id</th>
+    <th>creation_date</th>
+    <th>due_date</th>
+    <th>return_date</th>
+</tr>
+{% for book in books %}
+<tr>
+<td>{{book.lender_book_details.book_details.title}}</td>
+<td>{{book.creation_date}}</td>
+<td>{{book.due_date}}</td>
+<td>{{book.return_date}}</td>
+</tr>
+{% endfor %}
+</table>
+</article>
+{% endblock content %}

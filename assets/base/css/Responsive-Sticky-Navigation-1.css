@@ -22,6 +22,7 @@ nav.sticky {
   position: fixed;
   top: 0;
   transition: all 1s ease;
+  z-index: 2;
 }
 
 nav ul.navHold {

@@ -89,7 +89,11 @@ nav ul li a:hover {
   background-color: #800000;
   text-align: center;
 }
-
+.card-img{
+  width: 250px!important;
+  height: 300px!important;
+  object-fit: cover;
+}
 article {
   padding: 100px 50px 50px;
   font-family: Raleway;

@@ -3,7 +3,26 @@
 {% block content %}
     <br>
     <br>
-    <br>
+    <br><br>
+    <style>
+        .custom_container
+        {
+          margin-top: 130px;
+        }
+        @media only screen and (min-width: 1100px) {
+        
+        .custom_container {
+          margin-left: 300px;
+          margin-right: auto;
+          margin-bottom: 10px;
+        }
+      }
+      
+      
+      </style>
+      
+      
+      <div class="custom_container">
     Book Name: <h1>{{books.title}}</h1>
     
     Book author name: <p>{{books.author}}</p>
@@ -14,5 +33,5 @@
     
     Book language:  <p>{{books.language}}</p>
     <button type="button" class="btn btn-secondary"><a href="{% url 'reservation' books.id%}">Make Reservation</a></button>
-
+        </div>
 {% endblock content %}

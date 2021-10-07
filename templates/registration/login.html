@@ -2,15 +2,13 @@
 {% block title %}Sign Up{% endblock title %}
 {% block content %}
 <article>
-    <h1>Login Here</h1> 
-      
+    <h1>Login Here</h1>     
 </article>
 {% if messages %}
     {% for message in messages %}
         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
     {% endfor %}
 {% endif %}
-
     <form method="post">
     {% csrf_token %}
     <div class="form-group">

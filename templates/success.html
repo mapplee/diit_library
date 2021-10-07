@@ -1,14 +1,15 @@
 {% extends '__base.html' %}
 {% block title %}Checkout{% endblock title %}
 {% block content %}
+<br><br><br>
 
 <article>
-
+    <h1> masssage!!</h1>
    {% if messages %}
     {% for message in messages %}
         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
     {% endfor %}
 {% endif %}
-<h1>Please add masssage</h1>
+
 </article>
 {% endblock content %}

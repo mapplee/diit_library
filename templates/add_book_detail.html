@@ -2,22 +2,28 @@
 {% load static %}
 {% block content %}
 <br><br><br>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>addbookdetailsapple</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
-        <link rel="stylesheet" href="{% static 'add_book_detail/assets/css/styles.min.css' %}">
-    </head>
-    <body> <!-- Start:-->
-        <div class="col-md-6">
+ <!-- Start:-->
+        <style>
+            .custom_container
+            {
+              margin-top: 100px;
+            }
+            @media only screen and (min-width: 1100px) {
+            
+            .custom_container {
+              margin-left: 300px;
+              margin-right: auto;
+              margin-bottom: 10px;
+            }
+          }
+          
+          
+          </style>
+          <div class="custom_container">
+              <div class="col-md-6">
     <form action="addbook" method="POST">
         {% csrf_token %}
-        <h1 style="font-size: 20px;"><i class="" style="color: #00baff;"></i>Add Book Details</h1>
+        <h1 style="font-size: 40px;"><i class="" style="color: #00baff;"></i>Add Book Details</h1>
         <input type="text" class="border rounded-0 form-control" name="isbn" style="width: 500px;margin-bottom: 15px;" placeholder="ISBN Number" />
         <input type="text" class="border rounded-0 form-control" name="title" style="width: 500px;margin-bottom: 15px;" placeholder="Title" />
         <input type="text" class="border rounded-0 form-control" name="publisher" style="width: 500px;margin-bottom: 15px;" placeholder="Publisher" />
@@ -38,8 +44,7 @@
         <button class="btn btn-primary" type="submit" value="save" style="width: 500px;margin-right: 0px;margin-left: 0px;background-color: #00baff;">Save</button>
     </form>
 </div>
-<!-- End: --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+
 
 {% endblock content %}

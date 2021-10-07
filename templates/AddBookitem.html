@@ -1,16 +1,29 @@
 {% extends '__base.html' %}
 {% load static %}
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
-    <link rel="stylesheet" href="{% static 'book_item/assets/css/styles.min.css' %}">
 {% block content %}
-<br><br><br><br><br><br>
+
+<style>
+  .custom_container
+  {
+    margin-top: 130px;
+  }
+  @media only screen and (min-width: 1100px) {
+  
+  .custom_container {
+    margin-left: 300px;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+}
+
+
+</style>
+
+
+<div class="custom_container">
     <div class="col-md-6">
     <form>
-        <h1 class="h1" style="font-size: 20px;"><i class="" style="color: #00baff;"></i>Add Book Item</h1><br>
+        <h1 class="h1" style="font-size: 50px;"><i class="" style="color: #00baff;"></i>Add Book Item</h1>
 
         <div class="dropdown">
 
@@ -69,8 +82,8 @@
         <button class="btn btn-primary" type="button" style="width: 500px;margin-right: 0px;margin-left: 0px;background-color: #00baff;">Save</button>
     </form>
 </div>
+</div>
 {% endblock content %}
-<!-- End: Form --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
 
 

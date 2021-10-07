@@ -23,19 +23,26 @@
             <li><a href="{% url 'home' %}">Home</a></li> 
             {% if user.is_authenticated %}
             {% for group in request.user.groups.all %}
-            {% if group.name == 'Stuff' or group.name == 'Supper_admin' %}
-            <li><a href="{% url 'book_checkout' %}">Checkout_Book</a></li>
-            <li><a href="{% url 'add_book_detail' %}">Add_Book</a></li>
-            <li><a href="{% url 'add_item' %}">Add_Book_Item</a></li>
-            <li><a href="{% url 'book_return' %}">Return Book</a></li>
+            {% if group.name == 'Stuff' %}
+            <li>
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Option
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'book_checkout' %}">Checkout_Book</a>
+            <a class="dropdown-item" href="{% url 'add_book_detail' %}">Add_Book</a>
+            <a class="dropdown-item" href="{% url 'add_item' %}">Add_Book_Item</a>
+            <a class="dropdown-item" href="{% url 'book_return' %}">Return Book</a>
+            </div>
+            </div>
+            </li>
             {% endif %}
             {% endfor %}
             <!--<li><a href="#">My books</a></li>-->
 
-            
             <li><a href="{% url 'my_reserved_book' %}">m_R_book</a></li>
             <li><a href="{% url 'my_books' %}">My book</a></li>
-
             <li><a href="#">Hi {{ user.username }}!</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
@@ -48,8 +55,15 @@
     <div class="logosmall hidels">
         <img src="{% static 'base/img/diit_logo.png' %}" height="24px" />
     </div>
+     <!--search form start --> 
+    <form class="form-inline mt-2 mt-md-0" style="margin: 100px 100px 15px 505px;" action="{% url 'search_results' %}" method="get">
+    <input name="q" class="form-control" type="text" placeholder="Search"aria-label="Search">
+    <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+     <!--search form end --> 
 	<div class="navResponsive "></div>
 </nav>
+
 <div class="container">
     {% block content %}
 

@@ -1,6 +1,7 @@
 import uuid
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models.deletion import SET_NULL
+from django.db.models.fields import NullBooleanField
 from django.shortcuts import redirect, render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import BookDetail, Checkout_Details,book_Lending,BookItem,Book_Reservation
@@ -8,7 +9,7 @@ from .form import ReturnForm
 from django.contrib import messages
 from django.utils import timezone
 import datetime
-
+from accounts.admin import CustomUser
 
 
 
@@ -28,10 +29,14 @@ def Book_Return(request):
         if form.is_valid():
             
             user=form.cleaned_data['User_ID']
+            user_obj=CustomUser.objects.get(id=user)
             book_item_id_by_user=form.cleaned_data['Book_ID']
+            book_item_id_by_user_obj=BookItem.objects.get(id=book_item_id_by_user)
+            print(book_item_id_by_user)
             try:
-                lended_book_details=book_Lending.objects.get(lender_book_details=book_item_id_by_user,lender_details=user)
-                
+                #lended_book_details=book_Lending.objects.filter(lender_details=user,lender_book_details=book_item_id_by_user).first()
+                lended_book_details=book_Lending.objects.get(lender_details=user,lender_book_details=book_item_id_by_user,return_status="No")
+                print("okkk1")
                 lended_book_id=lended_book_details.lender_book_details
                 print("okkk2")
                 #change book Details
@@ -44,12 +49,13 @@ def Book_Return(request):
                 
                 book_details_change.save()
                 lended_book_change=lended_book_details
+                lended_book_change.return_status="Yes"
                 lended_book_change.return_date=datetime.datetime.now(timezone.utc)
                 lended_book_change.save()
                 print("okk5")
 
                 try:
-                    #change serervation
+                    #change Reservation
                     reserved_book_details=Book_Reservation.objects.filter(reserved_book_details=book_item_id_by_user,status="Waiting")[0]
                     print(reserved_book_details.status)
                     reserved_book_change=reserved_book_details

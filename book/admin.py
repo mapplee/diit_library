@@ -7,7 +7,7 @@ class BookDetaiAdmin(admin.ModelAdmin):
     list_display = ( "title", "id", "language", "author",)
 
 class Book_LendingAdmin(admin.ModelAdmin):
-    list_display = ( "lender_details", "lender_book_details", "return_date",)
+    list_display = ( "lender_details", "lender_book_details", "return_date","return_status",)
 
 class Book_ReservationAdmin(admin.ModelAdmin):
     list_display = ( "reserver_detials", "reserved_book_details", "status",)

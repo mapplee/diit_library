@@ -50,6 +50,10 @@ def Book_Checkout(request):
 
             try:
                 book_item_id_by_user=form.cleaned_data['Book_ID']
+                
+                book_item_id_by_user_obj=BookItem.objects.get(id=book_item_id_by_user)
+                print(book_item_id_by_user_obj)
+                
             except:
                 messages.success(request, 'Book not Found')
                 return HttpResponseRedirect(reverse_lazy('book_checkout'))
@@ -61,8 +65,8 @@ def Book_Checkout(request):
                 total_checkout_by_user=-1 #thouh user didn't creat any checkout
 
             try:
-                book_reservation_status=Book_Reservation.objects.get(reserved_book_details=book_item_id_by_user)#match the book has reservation
-                print(book_reservation_status.status)
+                book_reservation_status=Book_Reservation.objects.get(reserved_book_details=book_item_id_by_user,status="Pending")#match the book has reservation
+                print(book_reservation_status.status+' hello')
             except:
                 book_reservation_status=None #book is empty
             try:
@@ -70,8 +74,11 @@ def Book_Checkout(request):
                # print()) #match the id with reserver if thake
 
                 #book_reserver_id=book_reserver_id.reserver_details
+                
 
                 book_reserver_id=book_reserver_id.reserver_detials.id
+                print(book_reserver_id,'hi')
+                #book_reservation_status=book_reserver_id.status
 
             except:
                 book_reserver_id=None #didn't find any id
@@ -90,6 +97,8 @@ def Book_Checkout(request):
                 #contex['ch']=total_checkout_by_user
                 check_value=0
                 if book_reservation_status != None and book_reserver_id != int(user):
+                    #print(type(book_reserver_id))
+                    print(book_reserver_id,user)
                     
                     messages.success(request, 'This book is reserved by another member ')
                     return HttpResponseRedirect(reverse_lazy('book_checkout'))
@@ -185,12 +194,11 @@ def Reservation(request,id):
             try:
                 b=Book_Reservation.objects.filter(reserved_book_details=check_reserve_item.id,status="Pending")[0]
                 #print(check_reserve_item.id)
-                messages.success(request, 'Sorrry all books are reserved')
+                messages.success(request,'Sorrry all books are reserved')
                 return render(request,'success.html')
             except:
                 print("Not Ok")
-            Book_Reservation.objects.get(reserved_book_details=check_reserve_item.id,reserver_detials=user)#match the book already reserved by this id
-            
+            Book_Reservation.objects.get(reserved_book_details=check_reserve_item.id,reserver_detials=user,status="Pending")#match the book already reserved by this id
             messages.success(request, 'Soorry book has been already reserveved by you')
             return HttpResponseRedirect(reverse_lazy('success'))
         except:

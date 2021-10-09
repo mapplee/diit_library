@@ -71,6 +71,7 @@ nav ul li a:hover {
 }
 
 .imageHold, .imageHold img {
+  padding-top: 15px;
   max-width: 100%;
   line-height: 0;
   background-color:#C0C0C0;

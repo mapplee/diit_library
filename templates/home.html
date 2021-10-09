@@ -1,13 +1,10 @@
 {% extends '__base.html' %}
 {% block title %}Home{% endblock title %}
 {% block content %}
+<br><br>
 <article>
     <h1>Welcome to diit library {{test}}</h1>
 </article>
-
-
-
-
 
     {% for book in books %}
         <div class="container">
@@ -34,12 +31,6 @@
           </div>
 
         </div>
-
-      
-
-
-
-
     {% endfor %}
 
 {% endblock content %}

@@ -25,17 +25,17 @@
             {% for group in request.user.groups.all %}
             {% if group.name == 'Stuff' %}
             <li>
-            <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Option
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="{% url 'book_checkout' %}">Checkout_Book</a>
-            <a class="dropdown-item" href="{% url 'add_book_detail' %}">Add_Book</a>
-            <a class="dropdown-item" href="{% url 'add_item' %}">Add_Book_Item</a>
-            <a class="dropdown-item" href="{% url 'book_return' %}">Return Book</a>
-            </div>
-            </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Option
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{% url 'book_checkout' %}">Checkout_Book</a>
+                        <a class="dropdown-item" href="{% url 'add_book_detail' %}">Add_Book</a>
+                        <a class="dropdown-item" href="{% url 'add_item' %}">Add_Book_Item</a>
+                        <a class="dropdown-item" href="{% url 'book_return' %}">Return Book</a>
+                    </div>
+                </div>
             </li>
             {% endif %}
             {% endfor %}
@@ -47,7 +47,7 @@
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'signup' %}">Sign up</a></li>
-                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
             {% endif %}
     
         </ul>
@@ -56,22 +56,18 @@
         <img src="{% static 'base/img/diit_logo.png' %}" height="24px" />
     </div>
      <!--search form start --> 
-    <form class="form-inline mt-2 mt-md-0" style="margin: 100px 100px 15px 505px;" action="{% url 'search_results' %}" method="get">
-    <input name="q" class="form-control" type="text" placeholder="Search"aria-label="Search">
-    <button type="submit" class="btn btn-primary">Search</button>
+    <form class="form-inline mt-2 mt-md-0" style="text-align: center; justify-content: center; padding: 10px;" action="{% url 'search_results' %}" method="get">
+        <div class="navResponsive"></div>
+        <input name="q" class="form-control" type="text" placeholder="Search"aria-label="Search">
+        <button type="submit" class="btn btn-primary" style="margin-left: 5px;">Search</button>
     </form>
      <!--search form end --> 
-	<div class="navResponsive "></div>
 </nav>
 
-<div class="container">
+<div class="container" style="padding-bottom: 20px;">
     {% block content %}
 
-
-
-
     {% endblock content %}
-
 </div>
     <script src="{% static 'base/js/jquery.min.js' %}"></script>
     <script src="{% static 'base/bootstrap/js/bootstrap.min.js' %}"></script>

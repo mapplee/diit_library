@@ -9,6 +9,7 @@ nav {
   width: 100%;
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 10px;
   transition: all 1s ease;
 }
 
@@ -21,8 +22,10 @@ nav ul.navHold {
 
 nav ul li {
   float: left;
-  padding: 20px;
+  /*padding: 20px;*/
   line-height: 1;
+  text-align: center;
+  justify-content: center;
 }
 
 nav ul li.subNav ul {
@@ -92,9 +95,6 @@ article h1 {
 
 nav .navResponsive {
   display: none;
-  float: left;
-  padding: 19px 48px;
-  margin-top: 2px;
   line-height: 1;
   cursor: pointer;
   background-image: url(../img/menubutton1.png);
@@ -117,8 +117,10 @@ nav .navResponsive:hover {
 
 @media only screen and (max-width: 991px) {
   nav .navResponsive {
+    justify-content:center;
+    text-align: center;
     display: block;
-    margin-left: 30px;
+    padding-left: 5px;
   }
 }
 
@@ -189,3 +191,4 @@ nav .navResponsive:hover {
     cursor: pointer;
   }
 }
+

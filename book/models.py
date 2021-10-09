@@ -63,7 +63,3 @@ class Fine(models.Model):
 class Checkout_Details(models.Model):
     user_details=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     total_checkout=models.DecimalField(max_digits=6, decimal_places=2)
-
-
-
-

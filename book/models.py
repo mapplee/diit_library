@@ -54,6 +54,8 @@ class book_Lending(models.Model):
     creation_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     due_date=models.DateTimeField(auto_now=False, auto_now_add=False)
     return_date=models.DateTimeField(auto_now=False, auto_now_add=False,null=True)
+    StatusType = models.TextChoices('status', 'Yes No None')
+    return_status=models.CharField(blank=False, choices=StatusType.choices, max_length=10,default='No')
 class Fine(models.Model):
     reservation_details=models.OneToOneField(Book_Reservation, on_delete = models.CASCADE)
     lending_details=models.OneToOneField(book_Lending, on_delete = models.CASCADE)

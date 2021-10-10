@@ -41,8 +41,8 @@
             {% endfor %}
             <!--<li><a href="#">My books</a></li>-->
 
-            <li><a href="{% url 'my_reserved_book' %}">m_R_book</a></li>
-            <li><a href="{% url 'my_books' %}">My book</a></li>
+            <li><a href="{% url 'my_reserved_book' %}">Reserved books</a></li>
+            <li><a href="{% url 'my_books' %}">My books</a></li>
             <li><a href="#">Hi {{ user.username }}!</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
